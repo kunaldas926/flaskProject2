@@ -27,8 +27,8 @@ functions:
           method: post
           cors: true
 
-  list:
-    handler: flaskProject2/list.list
+  scan:
+    handler: flaskProject2/scan.scan
     events:
       - http:
           path: flaskProject2
