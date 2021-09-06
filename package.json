@@ -1,0 +1,11 @@
+{
+  "name": "flaskProject2",
+  "version": "1.0.0",
+  "description": "Serverless CRUD service exposing a REST HTTP interface",
+  "author": "Kunal Das",
+  "license": "UNLICENSE",
+  "devDependencies": {
+    "serverless-python-requirements": "^5.1.1",
+    "serverless-wsgi": "^2.0.1"
+  }
+}

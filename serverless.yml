@@ -1,0 +1,83 @@
+service: serverless-rest-api-with-dynamodb
+
+# frameworkVersion: ">=1.1.0 <=2.1.1"
+
+provider:
+  name: aws
+  runtime: python3.8
+  environment:
+    DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
+
+functions:
+  create:
+    handler: flaskProject2/create.create
+    events:
+      - http:
+          path: flaskProject2
+          method: post
+          cors: true
+
+  list:
+    handler: flaskProject2/list.list
+    events:
+      - http:
+          path: flaskProject2
+          method: get
+          cors: true
+
+  get:
+    handler: flaskProject2/get.get
+    events:
+      - http:
+          path: flaskProject2/{id}
+          method: get
+          cors: true
+
+  update:
+    handler: flaskProject2/update.update
+    events:
+      - http:
+          path: flaskProject2/{id}
+          method: put
+          cors: true
+
+  delete:
+    handler: flaskProject2/delete.delete
+    events:
+      - http:
+          path: flaskProject2/{id}
+          method: delete
+          cors: true
+
+resources:
+  Resources:
+    flaskProject2DynamoDbTable:
+      Type: 'AWS::DynamoDB::Table'
+      DeletionPolicy: Retain
+      Properties:
+        AttributeDefinitions:
+          -
+            AttributeName: id
+            AttributeType: S
+        KeySchema:
+          -
+            AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: ${self:provider.environment.DYNAMODB_TABLE}
+
+plugins:
+  - serverless-python-requirements
+  - serverless-wsgi
