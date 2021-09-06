@@ -1,4 +1,4 @@
-service: serverless-rest-api-with-dynamodb
+service: flaskProject2
 
 # frameworkVersion: ">=1.1.0 <=2.1.1"
 
