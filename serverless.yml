@@ -1,4 +1,4 @@
-service: flaskProject2
+service: flaskProject2-serverless-deploy
 
 # frameworkVersion: ">=1.1.0 <=2.1.1"
 
