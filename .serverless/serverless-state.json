@@ -1,14 +1,14 @@
 {
   "service": {
-    "service": "flaskProject2-serverless-deploy-v1-0-1",
+    "service": "flaskProject2-serverless-deploy-v0-0-1",
     "serviceObject": {
-      "name": "flaskProject2-serverless-deploy-v1-0-1"
+      "name": "flaskProject2-serverless-deploy-v0-0-1"
     },
     "provider": {
       "name": "aws",
       "runtime": "python3.8",
       "environment": {
-        "DYNAMODB_TABLE": "flaskProject2-serverless-deploy-v1-0-1-dev"
+        "DYNAMODB_TABLE": "flaskProject2-serverless-deploy-v0-0-1-dev"
       },
       "iamRoleStatements": [
         {
@@ -21,7 +21,7 @@
             "dynamodb:UpdateItem",
             "dynamodb:DeleteItem"
           ],
-          "Resource": "arn:aws:dynamodb:us-east-1:*:table/flaskProject2-serverless-deploy-v1-0-1-dev"
+          "Resource": "arn:aws:dynamodb:us-east-1:*:table/flaskProject2-serverless-deploy-v0-0-1-dev"
         }
       ],
       "stage": "dev",
@@ -103,31 +103,31 @@
           "CreateLogGroup": {
             "Type": "AWS::Logs::LogGroup",
             "Properties": {
-              "LogGroupName": "/aws/lambda/flaskProject2-serverless-deploy-v1-0-1-dev-create"
+              "LogGroupName": "/aws/lambda/flaskProject2-serverless-deploy-v0-0-1-dev-create"
             }
           },
           "ScanLogGroup": {
             "Type": "AWS::Logs::LogGroup",
             "Properties": {
-              "LogGroupName": "/aws/lambda/flaskProject2-serverless-deploy-v1-0-1-dev-scan"
+              "LogGroupName": "/aws/lambda/flaskProject2-serverless-deploy-v0-0-1-dev-scan"
             }
           },
           "GetLogGroup": {
             "Type": "AWS::Logs::LogGroup",
             "Properties": {
-              "LogGroupName": "/aws/lambda/flaskProject2-serverless-deploy-v1-0-1-dev-get"
+              "LogGroupName": "/aws/lambda/flaskProject2-serverless-deploy-v0-0-1-dev-get"
             }
           },
           "UpdateLogGroup": {
             "Type": "AWS::Logs::LogGroup",
             "Properties": {
-              "LogGroupName": "/aws/lambda/flaskProject2-serverless-deploy-v1-0-1-dev-update"
+              "LogGroupName": "/aws/lambda/flaskProject2-serverless-deploy-v0-0-1-dev-update"
             }
           },
           "DeleteLogGroup": {
             "Type": "AWS::Logs::LogGroup",
             "Properties": {
-              "LogGroupName": "/aws/lambda/flaskProject2-serverless-deploy-v1-0-1-dev-delete"
+              "LogGroupName": "/aws/lambda/flaskProject2-serverless-deploy-v0-0-1-dev-delete"
             }
           },
           "IamRoleLambdaExecution": {
@@ -155,7 +155,7 @@
                     "Fn::Join": [
                       "-",
                       [
-                        "flaskProject2-serverless-deploy-v1-0-1",
+                        "flaskProject2-serverless-deploy-v0-0-1",
                         "dev",
                         "lambda"
                       ]
@@ -172,7 +172,7 @@
                         ],
                         "Resource": [
                           {
-                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/flaskProject2-serverless-deploy-v1-0-1-dev*:*"
+                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/flaskProject2-serverless-deploy-v0-0-1-dev*:*"
                           }
                         ]
                       },
@@ -183,7 +183,7 @@
                         ],
                         "Resource": [
                           {
-                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/flaskProject2-serverless-deploy-v1-0-1-dev*:*:*"
+                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/flaskProject2-serverless-deploy-v0-0-1-dev*:*:*"
                           }
                         ]
                       },
@@ -199,7 +199,7 @@
                 "Fn::Join": [
                   "-",
                   [
-                    "flaskProject2-serverless-deploy-v1-0-1",
+                    "flaskProject2-serverless-deploy-v0-0-1",
                     "dev",
                     {
                       "Ref": "AWS::Region"
@@ -217,16 +217,16 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/flaskProject2-serverless-deploy-v1-0-1/dev/1630926896825-2021-09-06T11:14:56.825Z/flaskProject2-serverless-deploy-v1-0-1.zip"
+                "S3Key": "serverless/flaskProject2-serverless-deploy-v0-0-1/dev/1630931646619-2021-09-06T12:34:06.619Z/flaskProject2-serverless-deploy-v0-0-1.zip"
               },
               "Handler": "flaskProject2/create.create",
               "Runtime": "python3.8",
-              "FunctionName": "flaskProject2-serverless-deploy-v1-0-1-dev-create",
+              "FunctionName": "flaskProject2-serverless-deploy-v0-0-1-dev-create",
               "MemorySize": 1024,
               "Timeout": 6,
               "Environment": {
                 "Variables": {
-                  "DYNAMODB_TABLE": "flaskProject2-serverless-deploy-v1-0-1-dev"
+                  "DYNAMODB_TABLE": "flaskProject2-serverless-deploy-v0-0-1-dev"
                 }
               },
               "Role": {
@@ -247,16 +247,16 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/flaskProject2-serverless-deploy-v1-0-1/dev/1630926896825-2021-09-06T11:14:56.825Z/flaskProject2-serverless-deploy-v1-0-1.zip"
+                "S3Key": "serverless/flaskProject2-serverless-deploy-v0-0-1/dev/1630931646619-2021-09-06T12:34:06.619Z/flaskProject2-serverless-deploy-v0-0-1.zip"
               },
               "Handler": "flaskProject2/scan.scan",
               "Runtime": "python3.8",
-              "FunctionName": "flaskProject2-serverless-deploy-v1-0-1-dev-scan",
+              "FunctionName": "flaskProject2-serverless-deploy-v0-0-1-dev-scan",
               "MemorySize": 1024,
               "Timeout": 6,
               "Environment": {
                 "Variables": {
-                  "DYNAMODB_TABLE": "flaskProject2-serverless-deploy-v1-0-1-dev"
+                  "DYNAMODB_TABLE": "flaskProject2-serverless-deploy-v0-0-1-dev"
                 }
               },
               "Role": {
@@ -277,16 +277,16 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/flaskProject2-serverless-deploy-v1-0-1/dev/1630926896825-2021-09-06T11:14:56.825Z/flaskProject2-serverless-deploy-v1-0-1.zip"
+                "S3Key": "serverless/flaskProject2-serverless-deploy-v0-0-1/dev/1630931646619-2021-09-06T12:34:06.619Z/flaskProject2-serverless-deploy-v0-0-1.zip"
               },
               "Handler": "flaskProject2/get.get",
               "Runtime": "python3.8",
-              "FunctionName": "flaskProject2-serverless-deploy-v1-0-1-dev-get",
+              "FunctionName": "flaskProject2-serverless-deploy-v0-0-1-dev-get",
               "MemorySize": 1024,
               "Timeout": 6,
               "Environment": {
                 "Variables": {
-                  "DYNAMODB_TABLE": "flaskProject2-serverless-deploy-v1-0-1-dev"
+                  "DYNAMODB_TABLE": "flaskProject2-serverless-deploy-v0-0-1-dev"
                 }
               },
               "Role": {
@@ -307,16 +307,16 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/flaskProject2-serverless-deploy-v1-0-1/dev/1630926896825-2021-09-06T11:14:56.825Z/flaskProject2-serverless-deploy-v1-0-1.zip"
+                "S3Key": "serverless/flaskProject2-serverless-deploy-v0-0-1/dev/1630931646619-2021-09-06T12:34:06.619Z/flaskProject2-serverless-deploy-v0-0-1.zip"
               },
               "Handler": "flaskProject2/update.update",
               "Runtime": "python3.8",
-              "FunctionName": "flaskProject2-serverless-deploy-v1-0-1-dev-update",
+              "FunctionName": "flaskProject2-serverless-deploy-v0-0-1-dev-update",
               "MemorySize": 1024,
               "Timeout": 6,
               "Environment": {
                 "Variables": {
-                  "DYNAMODB_TABLE": "flaskProject2-serverless-deploy-v1-0-1-dev"
+                  "DYNAMODB_TABLE": "flaskProject2-serverless-deploy-v0-0-1-dev"
                 }
               },
               "Role": {
@@ -337,16 +337,16 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/flaskProject2-serverless-deploy-v1-0-1/dev/1630926896825-2021-09-06T11:14:56.825Z/flaskProject2-serverless-deploy-v1-0-1.zip"
+                "S3Key": "serverless/flaskProject2-serverless-deploy-v0-0-1/dev/1630931646619-2021-09-06T12:34:06.619Z/flaskProject2-serverless-deploy-v0-0-1.zip"
               },
               "Handler": "flaskProject2/delete.delete",
               "Runtime": "python3.8",
-              "FunctionName": "flaskProject2-serverless-deploy-v1-0-1-dev-delete",
+              "FunctionName": "flaskProject2-serverless-deploy-v0-0-1-dev-delete",
               "MemorySize": 1024,
               "Timeout": 6,
               "Environment": {
                 "Variables": {
-                  "DYNAMODB_TABLE": "flaskProject2-serverless-deploy-v1-0-1-dev"
+                  "DYNAMODB_TABLE": "flaskProject2-serverless-deploy-v0-0-1-dev"
                 }
               },
               "Role": {
@@ -360,60 +360,60 @@
               "DeleteLogGroup"
             ]
           },
-          "CreateLambdaVersionxO3UsrThMywt05gP7n3lkiTBrhQYDTOdix62Z1pFJM4": {
-            "Type": "AWS::Lambda::Version",
-            "DeletionPolicy": "Retain",
-            "Properties": {
-              "FunctionName": {
-                "Ref": "CreateLambdaFunction"
-              },
-              "CodeSha256": "AMAQaJt4ml+39pMaPMaM/gLYi2HTZfQVntC2w5hGGW8="
-            }
-          },
-          "ScanLambdaVersionLWdhp6SrNv5Qaw3XwhU7hbQ9CT3PiV9k9dUUga7g": {
+          "ScanLambdaVersion7XVuRJf5ohsGAKC3IF2tTSKWFybMBjR9C7nWrG1iaaU": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "ScanLambdaFunction"
               },
-              "CodeSha256": "AMAQaJt4ml+39pMaPMaM/gLYi2HTZfQVntC2w5hGGW8="
+              "CodeSha256": "3Smwo0DK87+ihrROSxS2aN2Nq5EEjrhRJ8r0jkzLCSM="
             }
           },
-          "GetLambdaVersionNnacshvNEhJ1v5QtOk68mKpBJO2pBzMNtWXl4TUs4": {
+          "CreateLambdaVersion5x75J2swk5ChvMMBT8oPNjtaHJsO1bZh53rO2sx9cE": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "CreateLambdaFunction"
+              },
+              "CodeSha256": "3Smwo0DK87+ihrROSxS2aN2Nq5EEjrhRJ8r0jkzLCSM="
+            }
+          },
+          "GetLambdaVersionotn4pTycNOat9GBeqmpWXcuubPQ4Jbz7ThWu58Npk": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "GetLambdaFunction"
               },
-              "CodeSha256": "AMAQaJt4ml+39pMaPMaM/gLYi2HTZfQVntC2w5hGGW8="
+              "CodeSha256": "3Smwo0DK87+ihrROSxS2aN2Nq5EEjrhRJ8r0jkzLCSM="
             }
           },
-          "UpdateLambdaVersionNhxnrt5q0juXBG8lfqF2JfbrJnjBrcOuipQb5V2zw": {
+          "UpdateLambdaVersionic3ar4OkW1VBxboRB2hgHuZ4tetSk2Oyhxmt2TCYI": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "UpdateLambdaFunction"
               },
-              "CodeSha256": "AMAQaJt4ml+39pMaPMaM/gLYi2HTZfQVntC2w5hGGW8="
+              "CodeSha256": "3Smwo0DK87+ihrROSxS2aN2Nq5EEjrhRJ8r0jkzLCSM="
             }
           },
-          "DeleteLambdaVersionaZpbkgPJOPsdGTJdGBvRmZY07qTncCiu1QW6vUu9DV4": {
+          "DeleteLambdaVersionPaQ8q6QYPwsc9Mf249nbjUEAkJGWQjcH9ILByY3EI": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "DeleteLambdaFunction"
               },
-              "CodeSha256": "AMAQaJt4ml+39pMaPMaM/gLYi2HTZfQVntC2w5hGGW8="
+              "CodeSha256": "3Smwo0DK87+ihrROSxS2aN2Nq5EEjrhRJ8r0jkzLCSM="
             }
           },
           "ApiGatewayRestApi": {
             "Type": "AWS::ApiGateway::RestApi",
             "Properties": {
-              "Name": "dev-flaskProject2-serverless-deploy-v1-0-1",
+              "Name": "dev-flaskProject2-serverless-deploy-v0-0-1",
               "EndpointConfiguration": {
                 "Types": [
                   "EDGE"
@@ -437,13 +437,13 @@
               }
             }
           },
-          "ApiGatewayResourceFlaskproject2IdVar": {
+          "ApiGatewayResourceFlaskproject2EmployeeidVar": {
             "Type": "AWS::ApiGateway::Resource",
             "Properties": {
               "ParentId": {
                 "Ref": "ApiGatewayResourceFlaskproject2"
               },
-              "PathPart": "{id}",
+              "PathPart": "{employeeId}",
               "RestApiId": {
                 "Ref": "ApiGatewayRestApi"
               }
@@ -494,7 +494,7 @@
               }
             }
           },
-          "ApiGatewayMethodFlaskproject2IdVarOptions": {
+          "ApiGatewayMethodFlaskproject2EmployeeidVarOptions": {
             "Type": "AWS::ApiGateway::Method",
             "Properties": {
               "AuthorizationType": "NONE",
@@ -532,7 +532,7 @@
                 ]
               },
               "ResourceId": {
-                "Ref": "ApiGatewayResourceFlaskproject2IdVar"
+                "Ref": "ApiGatewayResourceFlaskproject2EmployeeidVar"
               },
               "RestApiId": {
                 "Ref": "ApiGatewayRestApi"
@@ -631,13 +631,13 @@
               "ScanLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayMethodFlaskproject2IdVarGet": {
+          "ApiGatewayMethodFlaskproject2EmployeeidVarGet": {
             "Type": "AWS::ApiGateway::Method",
             "Properties": {
               "HttpMethod": "GET",
               "RequestParameters": {},
               "ResourceId": {
-                "Ref": "ApiGatewayResourceFlaskproject2IdVar"
+                "Ref": "ApiGatewayResourceFlaskproject2EmployeeidVar"
               },
               "RestApiId": {
                 "Ref": "ApiGatewayRestApi"
@@ -677,13 +677,13 @@
               "GetLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayMethodFlaskproject2IdVarPut": {
+          "ApiGatewayMethodFlaskproject2EmployeeidVarPut": {
             "Type": "AWS::ApiGateway::Method",
             "Properties": {
               "HttpMethod": "PUT",
               "RequestParameters": {},
               "ResourceId": {
-                "Ref": "ApiGatewayResourceFlaskproject2IdVar"
+                "Ref": "ApiGatewayResourceFlaskproject2EmployeeidVar"
               },
               "RestApiId": {
                 "Ref": "ApiGatewayRestApi"
@@ -723,13 +723,13 @@
               "UpdateLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayMethodFlaskproject2IdVarDelete": {
+          "ApiGatewayMethodFlaskproject2EmployeeidVarDelete": {
             "Type": "AWS::ApiGateway::Method",
             "Properties": {
               "HttpMethod": "DELETE",
               "RequestParameters": {},
               "ResourceId": {
-                "Ref": "ApiGatewayResourceFlaskproject2IdVar"
+                "Ref": "ApiGatewayResourceFlaskproject2EmployeeidVar"
               },
               "RestApiId": {
                 "Ref": "ApiGatewayRestApi"
@@ -769,7 +769,7 @@
               "DeleteLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1630926892853": {
+          "ApiGatewayDeployment1630931643725": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -779,12 +779,12 @@
             },
             "DependsOn": [
               "ApiGatewayMethodFlaskproject2Options",
-              "ApiGatewayMethodFlaskproject2IdVarOptions",
+              "ApiGatewayMethodFlaskproject2EmployeeidVarOptions",
               "ApiGatewayMethodFlaskproject2Post",
               "ApiGatewayMethodFlaskproject2Get",
-              "ApiGatewayMethodFlaskproject2IdVarGet",
-              "ApiGatewayMethodFlaskproject2IdVarPut",
-              "ApiGatewayMethodFlaskproject2IdVarDelete"
+              "ApiGatewayMethodFlaskproject2EmployeeidVarGet",
+              "ApiGatewayMethodFlaskproject2EmployeeidVarPut",
+              "ApiGatewayMethodFlaskproject2EmployeeidVarDelete"
             ]
           },
           "CreateLambdaPermissionApiGateway": {
@@ -992,7 +992,7 @@
                 "ReadCapacityUnits": 1,
                 "WriteCapacityUnits": 1
               },
-              "TableName": "flaskProject2-serverless-deploy-v1-0-1-dev"
+              "TableName": "flaskProject2-serverless-deploy-v0-0-1-dev"
             }
           }
         },
@@ -1002,52 +1002,52 @@
               "Ref": "ServerlessDeploymentBucket"
             },
             "Export": {
-              "Name": "sls-flaskProject2-serverless-deploy-v1-0-1-dev-ServerlessDeploymentBucketName"
-            }
-          },
-          "CreateLambdaFunctionQualifiedArn": {
-            "Description": "Current Lambda function version",
-            "Value": {
-              "Ref": "CreateLambdaVersionxO3UsrThMywt05gP7n3lkiTBrhQYDTOdix62Z1pFJM4"
-            },
-            "Export": {
-              "Name": "sls-flaskProject2-serverless-deploy-v1-0-1-dev-CreateLambdaFunctionQualifiedArn"
+              "Name": "sls-flaskProject2-serverless-deploy-v0-0-1-dev-ServerlessDeploymentBucketName"
             }
           },
           "ScanLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "ScanLambdaVersionLWdhp6SrNv5Qaw3XwhU7hbQ9CT3PiV9k9dUUga7g"
+              "Ref": "ScanLambdaVersion7XVuRJf5ohsGAKC3IF2tTSKWFybMBjR9C7nWrG1iaaU"
             },
             "Export": {
-              "Name": "sls-flaskProject2-serverless-deploy-v1-0-1-dev-ScanLambdaFunctionQualifiedArn"
+              "Name": "sls-flaskProject2-serverless-deploy-v0-0-1-dev-ScanLambdaFunctionQualifiedArn"
+            }
+          },
+          "CreateLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "CreateLambdaVersion5x75J2swk5ChvMMBT8oPNjtaHJsO1bZh53rO2sx9cE"
+            },
+            "Export": {
+              "Name": "sls-flaskProject2-serverless-deploy-v0-0-1-dev-CreateLambdaFunctionQualifiedArn"
             }
           },
           "GetLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "GetLambdaVersionNnacshvNEhJ1v5QtOk68mKpBJO2pBzMNtWXl4TUs4"
+              "Ref": "GetLambdaVersionotn4pTycNOat9GBeqmpWXcuubPQ4Jbz7ThWu58Npk"
             },
             "Export": {
-              "Name": "sls-flaskProject2-serverless-deploy-v1-0-1-dev-GetLambdaFunctionQualifiedArn"
+              "Name": "sls-flaskProject2-serverless-deploy-v0-0-1-dev-GetLambdaFunctionQualifiedArn"
             }
           },
           "UpdateLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "UpdateLambdaVersionNhxnrt5q0juXBG8lfqF2JfbrJnjBrcOuipQb5V2zw"
+              "Ref": "UpdateLambdaVersionic3ar4OkW1VBxboRB2hgHuZ4tetSk2Oyhxmt2TCYI"
             },
             "Export": {
-              "Name": "sls-flaskProject2-serverless-deploy-v1-0-1-dev-UpdateLambdaFunctionQualifiedArn"
+              "Name": "sls-flaskProject2-serverless-deploy-v0-0-1-dev-UpdateLambdaFunctionQualifiedArn"
             }
           },
           "DeleteLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "DeleteLambdaVersionaZpbkgPJOPsdGTJdGBvRmZY07qTncCiu1QW6vUu9DV4"
+              "Ref": "DeleteLambdaVersionPaQ8q6QYPwsc9Mf249nbjUEAkJGWQjcH9ILByY3EI"
             },
             "Export": {
-              "Name": "sls-flaskProject2-serverless-deploy-v1-0-1-dev-DeleteLambdaFunctionQualifiedArn"
+              "Name": "sls-flaskProject2-serverless-deploy-v0-0-1-dev-DeleteLambdaFunctionQualifiedArn"
             }
           },
           "ServiceEndpoint": {
@@ -1073,7 +1073,7 @@
               ]
             },
             "Export": {
-              "Name": "sls-flaskProject2-serverless-deploy-v1-0-1-dev-ServiceEndpoint"
+              "Name": "sls-flaskProject2-serverless-deploy-v0-0-1-dev-ServiceEndpoint"
             }
           }
         }
@@ -1198,13 +1198,13 @@
             }
           }
         ],
-        "name": "flaskProject2-serverless-deploy-v1-0-1-dev-create",
+        "name": "flaskProject2-serverless-deploy-v0-0-1-dev-create",
         "package": {},
         "memory": 1024,
         "timeout": 6,
         "runtime": "python3.8",
         "vpc": {},
-        "versionLogicalId": "CreateLambdaVersionxO3UsrThMywt05gP7n3lkiTBrhQYDTOdix62Z1pFJM4"
+        "versionLogicalId": "CreateLambdaVersion5x75J2swk5ChvMMBT8oPNjtaHJsO1bZh53rO2sx9cE"
       },
       "scan": {
         "handler": "flaskProject2/scan.scan",
@@ -1236,20 +1236,20 @@
             }
           }
         ],
-        "name": "flaskProject2-serverless-deploy-v1-0-1-dev-scan",
+        "name": "flaskProject2-serverless-deploy-v0-0-1-dev-scan",
         "package": {},
         "memory": 1024,
         "timeout": 6,
         "runtime": "python3.8",
         "vpc": {},
-        "versionLogicalId": "ScanLambdaVersionLWdhp6SrNv5Qaw3XwhU7hbQ9CT3PiV9k9dUUga7g"
+        "versionLogicalId": "ScanLambdaVersion7XVuRJf5ohsGAKC3IF2tTSKWFybMBjR9C7nWrG1iaaU"
       },
       "get": {
         "handler": "flaskProject2/get.get",
         "events": [
           {
             "http": {
-              "path": "flaskProject2/{id}",
+              "path": "flaskProject2/{employeeId}",
               "method": "get",
               "cors": {
                 "origins": [
@@ -1274,20 +1274,20 @@
             }
           }
         ],
-        "name": "flaskProject2-serverless-deploy-v1-0-1-dev-get",
+        "name": "flaskProject2-serverless-deploy-v0-0-1-dev-get",
         "package": {},
         "memory": 1024,
         "timeout": 6,
         "runtime": "python3.8",
         "vpc": {},
-        "versionLogicalId": "GetLambdaVersionNnacshvNEhJ1v5QtOk68mKpBJO2pBzMNtWXl4TUs4"
+        "versionLogicalId": "GetLambdaVersionotn4pTycNOat9GBeqmpWXcuubPQ4Jbz7ThWu58Npk"
       },
       "update": {
         "handler": "flaskProject2/update.update",
         "events": [
           {
             "http": {
-              "path": "flaskProject2/{id}",
+              "path": "flaskProject2/{employeeId}",
               "method": "put",
               "cors": {
                 "origins": [
@@ -1312,20 +1312,20 @@
             }
           }
         ],
-        "name": "flaskProject2-serverless-deploy-v1-0-1-dev-update",
+        "name": "flaskProject2-serverless-deploy-v0-0-1-dev-update",
         "package": {},
         "memory": 1024,
         "timeout": 6,
         "runtime": "python3.8",
         "vpc": {},
-        "versionLogicalId": "UpdateLambdaVersionNhxnrt5q0juXBG8lfqF2JfbrJnjBrcOuipQb5V2zw"
+        "versionLogicalId": "UpdateLambdaVersionic3ar4OkW1VBxboRB2hgHuZ4tetSk2Oyhxmt2TCYI"
       },
       "delete": {
         "handler": "flaskProject2/delete.delete",
         "events": [
           {
             "http": {
-              "path": "flaskProject2/{id}",
+              "path": "flaskProject2/{employeeId}",
               "method": "delete",
               "cors": {
                 "origins": [
@@ -1350,13 +1350,13 @@
             }
           }
         ],
-        "name": "flaskProject2-serverless-deploy-v1-0-1-dev-delete",
+        "name": "flaskProject2-serverless-deploy-v0-0-1-dev-delete",
         "package": {},
         "memory": 1024,
         "timeout": 6,
         "runtime": "python3.8",
         "vpc": {},
-        "versionLogicalId": "DeleteLambdaVersionaZpbkgPJOPsdGTJdGBvRmZY07qTncCiu1QW6vUu9DV4"
+        "versionLogicalId": "DeleteLambdaVersionPaQ8q6QYPwsc9Mf249nbjUEAkJGWQjcH9ILByY3EI"
       }
     },
     "resources": {
@@ -1381,7 +1381,7 @@
               "ReadCapacityUnits": 1,
               "WriteCapacityUnits": 1
             },
-            "TableName": "flaskProject2-serverless-deploy-v1-0-1-dev"
+            "TableName": "flaskProject2-serverless-deploy-v0-0-1-dev"
           }
         }
       },
@@ -1408,10 +1408,10 @@
     },
     "layers": {},
     "isDashboardMonitoringPreconfigured": false,
-    "artifact": "C:\\Users\\cbnits-129\\PycharmProjects\\flaskProject2\\.serverless\\flaskProject2-serverless-deploy-v1-0-1.zip"
+    "artifact": "C:\\Users\\cbnits-129\\PycharmProjects\\flaskProject2\\.serverless\\flaskProject2-serverless-deploy-v0-0-1.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/flaskProject2-serverless-deploy-v1-0-1/dev/1630926896825-2021-09-06T11:14:56.825Z",
-    "artifact": "flaskProject2-serverless-deploy-v1-0-1.zip"
+    "artifactDirectoryName": "serverless/flaskProject2-serverless-deploy-v0-0-1/dev/1630931646619-2021-09-06T12:34:06.619Z",
+    "artifact": "flaskProject2-serverless-deploy-v0-0-1.zip"
   }
 }

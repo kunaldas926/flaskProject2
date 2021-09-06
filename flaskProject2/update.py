@@ -24,19 +24,19 @@ def update(event, context):
             'employeeId': event['pathParameters']['employeeId']
         },
         ExpressionAttributeNames={
-            '#firstName': 'firstName',
-            '#lastName': 'lastName',
-            '#email': 'email',
+            "#firstName": "firstName",
+            "#lastName": "lastName",
+            "#email": "email",
         },
         ExpressionAttributeValues={
-            ':firstName': data['firstName'],
-            ':lastName': data['lastName'],
-            ':email': data['email'],
+            ":firstName": data["firstName"],
+            ":lastName": data["lastName"],
+            ":email": data["email"],
         },
         UpdateExpression='SET #firstName = :firstName, '
-                         'lastName = :lastName, '
-                         'email = :email',
-        ReturnValues='ALL_NEW',
+                         '#lastName = :lastName, '
+                         '#email = :email',
+        ReturnValues="ALL_NEW",
     )
 
     # create a response
