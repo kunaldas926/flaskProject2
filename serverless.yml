@@ -1,4 +1,4 @@
-service: flaskProject2-serverless-deploy-v1-0-0
+service: flaskProject2-serverless-deploy-v0-0-1
 
 # frameworkVersion: ">=1.1.0 <=2.1.1"
 
@@ -39,7 +39,7 @@ functions:
     handler: flaskProject2/get.get
     events:
       - http:
-          path: flaskProject2/{id}
+          path: flaskProject2/{employeeId}
           method: get
           cors: true
 
@@ -47,7 +47,7 @@ functions:
     handler: flaskProject2/update.update
     events:
       - http:
-          path: flaskProject2/{id}
+          path: flaskProject2/{employeeId}
           method: put
           cors: true
 
@@ -55,7 +55,7 @@ functions:
     handler: flaskProject2/delete.delete
     events:
       - http:
-          path: flaskProject2/{id}
+          path: flaskProject2/{employeeId}
           method: delete
           cors: true
 
