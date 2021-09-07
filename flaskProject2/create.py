@@ -8,7 +8,7 @@ import boto3
 dynamodb = boto3.resource('dynamodb')
 
 
-def create(event, context):
+def create(event):
     data = json.loads(event['body'])
     if 'firstName' not in data:
         logging.error("Validation Failed")

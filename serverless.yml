@@ -10,13 +10,21 @@ provider:
   iamRoleStatements:
     - Effect: Allow
       Action:
+        - *
+        - dynamodb:DescribeTable
+        - dynamodb:Scan
         - dynamodb:Query
         - dynamodb:Scan
         - dynamodb:GetItem
         - dynamodb:PutItem
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
-      Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
+      Resource:
+        [
+          "*"
+          "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
+        ]
+
 
 functions:
   create:
@@ -58,6 +66,11 @@ functions:
           path: flaskProject2/{employeeId}
           method: delete
           cors: true
+
+  gluejob:
+    handler: flaskProject2/glejob.gluejob
+    events:
+      -
 
 resources:
   Resources:

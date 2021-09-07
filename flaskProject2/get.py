@@ -7,7 +7,7 @@ import boto3
 dynamodb = boto3.resource('dynamodb')
 
 
-def get(event, context):
+def get(event):
     table = dynamodb.Table(os.environ['DYNAMODB_TABLE'])
     logging.debug(event)
 

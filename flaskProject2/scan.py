@@ -6,7 +6,7 @@ import boto3
 dynamodb = boto3.resource('dynamodb')
 
 
-def scan(event, context):
+def scan():
     table = dynamodb.Table(os.environ['DYNAMODB_TABLE'])
 
     # fetch all todos from the database
