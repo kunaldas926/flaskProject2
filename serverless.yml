@@ -10,8 +10,22 @@ provider:
   iamRoleStatements:
     - Effect: Allow
       Action:
-        - *
-        - dynamodb:DescribeTable
+        - states:*
+        - iam:*
+        - lambda:*
+        - glue:*
+        - redshift:*
+        - iam:*
+        - ec2:*
+        - rds:*
+        - cloudformation:*
+        - kms:*
+        - cloudwatch:*
+        - appflow:*
+        - databrew:*
+        - sts:*
+        - s3:*
+        - dynamodb:*
         - dynamodb:Scan
         - dynamodb:Query
         - dynamodb:Scan
@@ -21,7 +35,7 @@ provider:
         - dynamodb:DeleteItem
       Resource:
         [
-          "*"
+          "*",
           "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
         ]
 
@@ -68,9 +82,12 @@ functions:
           cors: true
 
   gluejob:
-    handler: flaskProject2/glejob.gluejob
+    handler: flaskProject2/gluejob.gluejob
     events:
-      -
+      - http:
+          path: flaskProject2/gluejob
+          method: get
+          cors: true
 
 resources:
   Resources:

@@ -14,6 +14,23 @@
         {
           "Effect": "Allow",
           "Action": [
+            "states:*",
+            "iam:*",
+            "lambda:*",
+            "glue:*",
+            "redshift:*",
+            "iam:*",
+            "ec2:*",
+            "rds:*",
+            "cloudformation:*",
+            "kms:*",
+            "cloudwatch:*",
+            "appflow:*",
+            "databrew:*",
+            "sts:*",
+            "s3:*",
+            "dynamodb:*",
+            "dynamodb:Scan",
             "dynamodb:Query",
             "dynamodb:Scan",
             "dynamodb:GetItem",
@@ -21,7 +38,10 @@
             "dynamodb:UpdateItem",
             "dynamodb:DeleteItem"
           ],
-          "Resource": "arn:aws:dynamodb:us-east-1:*:table/flaskProject2-serverless-deploy-v0-0-1-dev"
+          "Resource": [
+            "*",
+            "arn:aws:dynamodb:us-east-1:*:table/flaskProject2-serverless-deploy-v0-0-1-dev"
+          ]
         }
       ],
       "stage": "dev",
@@ -130,6 +150,12 @@
               "LogGroupName": "/aws/lambda/flaskProject2-serverless-deploy-v0-0-1-dev-delete"
             }
           },
+          "GluejobLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/flaskProject2-serverless-deploy-v0-0-1-dev-gluejob"
+            }
+          },
           "IamRoleLambdaExecution": {
             "Type": "AWS::IAM::Role",
             "Properties": {
@@ -217,7 +243,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/flaskProject2-serverless-deploy-v0-0-1/dev/1630931646619-2021-09-06T12:34:06.619Z/flaskProject2-serverless-deploy-v0-0-1.zip"
+                "S3Key": "serverless/flaskProject2-serverless-deploy-v0-0-1/dev/1631161278348-2021-09-09T04:21:18.348Z/flaskProject2-serverless-deploy-v0-0-1.zip"
               },
               "Handler": "flaskProject2/create.create",
               "Runtime": "python3.8",
@@ -247,7 +273,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/flaskProject2-serverless-deploy-v0-0-1/dev/1630931646619-2021-09-06T12:34:06.619Z/flaskProject2-serverless-deploy-v0-0-1.zip"
+                "S3Key": "serverless/flaskProject2-serverless-deploy-v0-0-1/dev/1631161278348-2021-09-09T04:21:18.348Z/flaskProject2-serverless-deploy-v0-0-1.zip"
               },
               "Handler": "flaskProject2/scan.scan",
               "Runtime": "python3.8",
@@ -277,7 +303,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/flaskProject2-serverless-deploy-v0-0-1/dev/1630931646619-2021-09-06T12:34:06.619Z/flaskProject2-serverless-deploy-v0-0-1.zip"
+                "S3Key": "serverless/flaskProject2-serverless-deploy-v0-0-1/dev/1631161278348-2021-09-09T04:21:18.348Z/flaskProject2-serverless-deploy-v0-0-1.zip"
               },
               "Handler": "flaskProject2/get.get",
               "Runtime": "python3.8",
@@ -307,7 +333,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/flaskProject2-serverless-deploy-v0-0-1/dev/1630931646619-2021-09-06T12:34:06.619Z/flaskProject2-serverless-deploy-v0-0-1.zip"
+                "S3Key": "serverless/flaskProject2-serverless-deploy-v0-0-1/dev/1631161278348-2021-09-09T04:21:18.348Z/flaskProject2-serverless-deploy-v0-0-1.zip"
               },
               "Handler": "flaskProject2/update.update",
               "Runtime": "python3.8",
@@ -337,7 +363,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/flaskProject2-serverless-deploy-v0-0-1/dev/1630931646619-2021-09-06T12:34:06.619Z/flaskProject2-serverless-deploy-v0-0-1.zip"
+                "S3Key": "serverless/flaskProject2-serverless-deploy-v0-0-1/dev/1631161278348-2021-09-09T04:21:18.348Z/flaskProject2-serverless-deploy-v0-0-1.zip"
               },
               "Handler": "flaskProject2/delete.delete",
               "Runtime": "python3.8",
@@ -360,54 +386,94 @@
               "DeleteLogGroup"
             ]
           },
-          "ScanLambdaVersion7XVuRJf5ohsGAKC3IF2tTSKWFybMBjR9C7nWrG1iaaU": {
-            "Type": "AWS::Lambda::Version",
-            "DeletionPolicy": "Retain",
+          "GluejobLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
             "Properties": {
-              "FunctionName": {
-                "Ref": "ScanLambdaFunction"
+              "Code": {
+                "S3Bucket": {
+                  "Ref": "ServerlessDeploymentBucket"
+                },
+                "S3Key": "serverless/flaskProject2-serverless-deploy-v0-0-1/dev/1631161278348-2021-09-09T04:21:18.348Z/flaskProject2-serverless-deploy-v0-0-1.zip"
               },
-              "CodeSha256": "3Smwo0DK87+ihrROSxS2aN2Nq5EEjrhRJ8r0jkzLCSM="
-            }
+              "Handler": "flaskProject2/gluejob.gluejob",
+              "Runtime": "python3.8",
+              "FunctionName": "flaskProject2-serverless-deploy-v0-0-1-dev-gluejob",
+              "MemorySize": 1024,
+              "Timeout": 6,
+              "Environment": {
+                "Variables": {
+                  "DYNAMODB_TABLE": "flaskProject2-serverless-deploy-v0-0-1-dev"
+                }
+              },
+              "Role": {
+                "Fn::GetAtt": [
+                  "IamRoleLambdaExecution",
+                  "Arn"
+                ]
+              }
+            },
+            "DependsOn": [
+              "GluejobLogGroup"
+            ]
           },
-          "CreateLambdaVersion5x75J2swk5ChvMMBT8oPNjtaHJsO1bZh53rO2sx9cE": {
+          "CreateLambdaVersionKJOJEenHINmDObimfRsvqTkGWhuypBBPtxQknXdto": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "CreateLambdaFunction"
               },
-              "CodeSha256": "3Smwo0DK87+ihrROSxS2aN2Nq5EEjrhRJ8r0jkzLCSM="
+              "CodeSha256": "m9VkpRTwP3ZeIpDRbj834KeY3Acjip+l9q6TKqvWy4M="
             }
           },
-          "GetLambdaVersionotn4pTycNOat9GBeqmpWXcuubPQ4Jbz7ThWu58Npk": {
+          "GetLambdaVersion8Aqso7iKJE0ktFqwvhxfjWdFawDiBPGW7tIbFjvlu4": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "GetLambdaFunction"
               },
-              "CodeSha256": "3Smwo0DK87+ihrROSxS2aN2Nq5EEjrhRJ8r0jkzLCSM="
+              "CodeSha256": "m9VkpRTwP3ZeIpDRbj834KeY3Acjip+l9q6TKqvWy4M="
             }
           },
-          "UpdateLambdaVersionic3ar4OkW1VBxboRB2hgHuZ4tetSk2Oyhxmt2TCYI": {
-            "Type": "AWS::Lambda::Version",
-            "DeletionPolicy": "Retain",
-            "Properties": {
-              "FunctionName": {
-                "Ref": "UpdateLambdaFunction"
-              },
-              "CodeSha256": "3Smwo0DK87+ihrROSxS2aN2Nq5EEjrhRJ8r0jkzLCSM="
-            }
-          },
-          "DeleteLambdaVersionPaQ8q6QYPwsc9Mf249nbjUEAkJGWQjcH9ILByY3EI": {
+          "DeleteLambdaVersionfSmS3fvxltqMpIui4uGUdAVhJZhE3jCjcIbbuTM4": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "DeleteLambdaFunction"
               },
-              "CodeSha256": "3Smwo0DK87+ihrROSxS2aN2Nq5EEjrhRJ8r0jkzLCSM="
+              "CodeSha256": "m9VkpRTwP3ZeIpDRbj834KeY3Acjip+l9q6TKqvWy4M="
+            }
+          },
+          "ScanLambdaVersionrAzg7SFsX4wpYeQhHGEzlfOOTnV6RRxylbir6M3Kc": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "ScanLambdaFunction"
+              },
+              "CodeSha256": "m9VkpRTwP3ZeIpDRbj834KeY3Acjip+l9q6TKqvWy4M="
+            }
+          },
+          "UpdateLambdaVersionizQGQZCho1n4ZFpKfba40gd5kJhXOqkaDQgUrxNhb0": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "UpdateLambdaFunction"
+              },
+              "CodeSha256": "m9VkpRTwP3ZeIpDRbj834KeY3Acjip+l9q6TKqvWy4M="
+            }
+          },
+          "GluejobLambdaVersionChs6TfUZsPE5J4gMaS8L6dkBXbwBX5znbjZqseORM": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "GluejobLambdaFunction"
+              },
+              "CodeSha256": "m9VkpRTwP3ZeIpDRbj834KeY3Acjip+l9q6TKqvWy4M="
             }
           },
           "ApiGatewayRestApi": {
@@ -444,6 +510,18 @@
                 "Ref": "ApiGatewayResourceFlaskproject2"
               },
               "PathPart": "{employeeId}",
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              }
+            }
+          },
+          "ApiGatewayResourceFlaskproject2Gluejob": {
+            "Type": "AWS::ApiGateway::Resource",
+            "Properties": {
+              "ParentId": {
+                "Ref": "ApiGatewayResourceFlaskproject2"
+              },
+              "PathPart": "gluejob",
               "RestApiId": {
                 "Ref": "ApiGatewayRestApi"
               }
@@ -533,6 +611,51 @@
               },
               "ResourceId": {
                 "Ref": "ApiGatewayResourceFlaskproject2EmployeeidVar"
+              },
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              }
+            }
+          },
+          "ApiGatewayMethodFlaskproject2GluejobOptions": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "AuthorizationType": "NONE",
+              "HttpMethod": "OPTIONS",
+              "MethodResponses": [
+                {
+                  "StatusCode": "200",
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true,
+                    "method.response.header.Access-Control-Allow-Headers": true,
+                    "method.response.header.Access-Control-Allow-Methods": true
+                  },
+                  "ResponseModels": {}
+                }
+              ],
+              "RequestParameters": {},
+              "Integration": {
+                "Type": "MOCK",
+                "RequestTemplates": {
+                  "application/json": "{statusCode:200}"
+                },
+                "ContentHandling": "CONVERT_TO_TEXT",
+                "IntegrationResponses": [
+                  {
+                    "StatusCode": "200",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'",
+                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+                      "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET'"
+                    },
+                    "ResponseTemplates": {
+                      "application/json": "#set($origin = $input.params(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params(\"origin\")) #end\n#if($origin.matches(\".+\")) #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin) #end"
+                    }
+                  }
+                ]
+              },
+              "ResourceId": {
+                "Ref": "ApiGatewayResourceFlaskproject2Gluejob"
               },
               "RestApiId": {
                 "Ref": "ApiGatewayRestApi"
@@ -769,7 +892,53 @@
               "DeleteLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1630931643725": {
+          "ApiGatewayMethodFlaskproject2GluejobGet": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "HttpMethod": "GET",
+              "RequestParameters": {},
+              "ResourceId": {
+                "Ref": "ApiGatewayResourceFlaskproject2Gluejob"
+              },
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "ApiKeyRequired": false,
+              "AuthorizationType": "NONE",
+              "Integration": {
+                "IntegrationHttpMethod": "POST",
+                "Type": "AWS_PROXY",
+                "Uri": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":apigateway:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":lambda:path/2015-03-31/functions/",
+                      {
+                        "Fn::GetAtt": [
+                          "GluejobLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "/invocations"
+                    ]
+                  ]
+                }
+              },
+              "MethodResponses": []
+            },
+            "DependsOn": [
+              "GluejobLambdaPermissionApiGateway"
+            ]
+          },
+          "ApiGatewayDeployment1631161275432": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -780,11 +949,13 @@
             "DependsOn": [
               "ApiGatewayMethodFlaskproject2Options",
               "ApiGatewayMethodFlaskproject2EmployeeidVarOptions",
+              "ApiGatewayMethodFlaskproject2GluejobOptions",
               "ApiGatewayMethodFlaskproject2Post",
               "ApiGatewayMethodFlaskproject2Get",
               "ApiGatewayMethodFlaskproject2EmployeeidVarGet",
               "ApiGatewayMethodFlaskproject2EmployeeidVarPut",
-              "ApiGatewayMethodFlaskproject2EmployeeidVarDelete"
+              "ApiGatewayMethodFlaskproject2EmployeeidVarDelete",
+              "ApiGatewayMethodFlaskproject2GluejobGet"
             ]
           },
           "CreateLambdaPermissionApiGateway": {
@@ -972,6 +1143,43 @@
               }
             }
           },
+          "GluejobLambdaPermissionApiGateway": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+              "FunctionName": {
+                "Fn::GetAtt": [
+                  "GluejobLambdaFunction",
+                  "Arn"
+                ]
+              },
+              "Action": "lambda:InvokeFunction",
+              "Principal": "apigateway.amazonaws.com",
+              "SourceArn": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition"
+                    },
+                    ":execute-api:",
+                    {
+                      "Ref": "AWS::Region"
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId"
+                    },
+                    ":",
+                    {
+                      "Ref": "ApiGatewayRestApi"
+                    },
+                    "/*/*"
+                  ]
+                ]
+              }
+            }
+          },
           "flaskProject2DynamoDbTable": {
             "Type": "AWS::DynamoDB::Table",
             "DeletionPolicy": "Retain",
@@ -1005,19 +1213,10 @@
               "Name": "sls-flaskProject2-serverless-deploy-v0-0-1-dev-ServerlessDeploymentBucketName"
             }
           },
-          "ScanLambdaFunctionQualifiedArn": {
-            "Description": "Current Lambda function version",
-            "Value": {
-              "Ref": "ScanLambdaVersion7XVuRJf5ohsGAKC3IF2tTSKWFybMBjR9C7nWrG1iaaU"
-            },
-            "Export": {
-              "Name": "sls-flaskProject2-serverless-deploy-v0-0-1-dev-ScanLambdaFunctionQualifiedArn"
-            }
-          },
           "CreateLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "CreateLambdaVersion5x75J2swk5ChvMMBT8oPNjtaHJsO1bZh53rO2sx9cE"
+              "Ref": "CreateLambdaVersionKJOJEenHINmDObimfRsvqTkGWhuypBBPtxQknXdto"
             },
             "Export": {
               "Name": "sls-flaskProject2-serverless-deploy-v0-0-1-dev-CreateLambdaFunctionQualifiedArn"
@@ -1026,28 +1225,46 @@
           "GetLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "GetLambdaVersionotn4pTycNOat9GBeqmpWXcuubPQ4Jbz7ThWu58Npk"
+              "Ref": "GetLambdaVersion8Aqso7iKJE0ktFqwvhxfjWdFawDiBPGW7tIbFjvlu4"
             },
             "Export": {
               "Name": "sls-flaskProject2-serverless-deploy-v0-0-1-dev-GetLambdaFunctionQualifiedArn"
             }
           },
+          "DeleteLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "DeleteLambdaVersionfSmS3fvxltqMpIui4uGUdAVhJZhE3jCjcIbbuTM4"
+            },
+            "Export": {
+              "Name": "sls-flaskProject2-serverless-deploy-v0-0-1-dev-DeleteLambdaFunctionQualifiedArn"
+            }
+          },
+          "ScanLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "ScanLambdaVersionrAzg7SFsX4wpYeQhHGEzlfOOTnV6RRxylbir6M3Kc"
+            },
+            "Export": {
+              "Name": "sls-flaskProject2-serverless-deploy-v0-0-1-dev-ScanLambdaFunctionQualifiedArn"
+            }
+          },
           "UpdateLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "UpdateLambdaVersionic3ar4OkW1VBxboRB2hgHuZ4tetSk2Oyhxmt2TCYI"
+              "Ref": "UpdateLambdaVersionizQGQZCho1n4ZFpKfba40gd5kJhXOqkaDQgUrxNhb0"
             },
             "Export": {
               "Name": "sls-flaskProject2-serverless-deploy-v0-0-1-dev-UpdateLambdaFunctionQualifiedArn"
             }
           },
-          "DeleteLambdaFunctionQualifiedArn": {
+          "GluejobLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "DeleteLambdaVersionPaQ8q6QYPwsc9Mf249nbjUEAkJGWQjcH9ILByY3EI"
+              "Ref": "GluejobLambdaVersionChs6TfUZsPE5J4gMaS8L6dkBXbwBX5znbjZqseORM"
             },
             "Export": {
-              "Name": "sls-flaskProject2-serverless-deploy-v0-0-1-dev-DeleteLambdaFunctionQualifiedArn"
+              "Name": "sls-flaskProject2-serverless-deploy-v0-0-1-dev-GluejobLambdaFunctionQualifiedArn"
             }
           },
           "ServiceEndpoint": {
@@ -1204,7 +1421,7 @@
         "timeout": 6,
         "runtime": "python3.8",
         "vpc": {},
-        "versionLogicalId": "CreateLambdaVersion5x75J2swk5ChvMMBT8oPNjtaHJsO1bZh53rO2sx9cE"
+        "versionLogicalId": "CreateLambdaVersionKJOJEenHINmDObimfRsvqTkGWhuypBBPtxQknXdto"
       },
       "scan": {
         "handler": "flaskProject2/scan.scan",
@@ -1242,7 +1459,7 @@
         "timeout": 6,
         "runtime": "python3.8",
         "vpc": {},
-        "versionLogicalId": "ScanLambdaVersion7XVuRJf5ohsGAKC3IF2tTSKWFybMBjR9C7nWrG1iaaU"
+        "versionLogicalId": "ScanLambdaVersionrAzg7SFsX4wpYeQhHGEzlfOOTnV6RRxylbir6M3Kc"
       },
       "get": {
         "handler": "flaskProject2/get.get",
@@ -1280,7 +1497,7 @@
         "timeout": 6,
         "runtime": "python3.8",
         "vpc": {},
-        "versionLogicalId": "GetLambdaVersionotn4pTycNOat9GBeqmpWXcuubPQ4Jbz7ThWu58Npk"
+        "versionLogicalId": "GetLambdaVersion8Aqso7iKJE0ktFqwvhxfjWdFawDiBPGW7tIbFjvlu4"
       },
       "update": {
         "handler": "flaskProject2/update.update",
@@ -1318,7 +1535,7 @@
         "timeout": 6,
         "runtime": "python3.8",
         "vpc": {},
-        "versionLogicalId": "UpdateLambdaVersionic3ar4OkW1VBxboRB2hgHuZ4tetSk2Oyhxmt2TCYI"
+        "versionLogicalId": "UpdateLambdaVersionizQGQZCho1n4ZFpKfba40gd5kJhXOqkaDQgUrxNhb0"
       },
       "delete": {
         "handler": "flaskProject2/delete.delete",
@@ -1356,7 +1573,45 @@
         "timeout": 6,
         "runtime": "python3.8",
         "vpc": {},
-        "versionLogicalId": "DeleteLambdaVersionPaQ8q6QYPwsc9Mf249nbjUEAkJGWQjcH9ILByY3EI"
+        "versionLogicalId": "DeleteLambdaVersionfSmS3fvxltqMpIui4uGUdAVhJZhE3jCjcIbbuTM4"
+      },
+      "gluejob": {
+        "handler": "flaskProject2/gluejob.gluejob",
+        "events": [
+          {
+            "http": {
+              "path": "flaskProject2/gluejob",
+              "method": "get",
+              "cors": {
+                "origins": [
+                  "*"
+                ],
+                "origin": "*",
+                "methods": [
+                  "OPTIONS",
+                  "GET"
+                ],
+                "headers": [
+                  "Content-Type",
+                  "X-Amz-Date",
+                  "Authorization",
+                  "X-Api-Key",
+                  "X-Amz-Security-Token",
+                  "X-Amz-User-Agent"
+                ],
+                "allowCredentials": false
+              },
+              "integration": "AWS_PROXY"
+            }
+          }
+        ],
+        "name": "flaskProject2-serverless-deploy-v0-0-1-dev-gluejob",
+        "package": {},
+        "memory": 1024,
+        "timeout": 6,
+        "runtime": "python3.8",
+        "vpc": {},
+        "versionLogicalId": "GluejobLambdaVersionChs6TfUZsPE5J4gMaS8L6dkBXbwBX5znbjZqseORM"
       }
     },
     "resources": {
@@ -1411,7 +1666,7 @@
     "artifact": "C:\\Users\\cbnits-129\\PycharmProjects\\flaskProject2\\.serverless\\flaskProject2-serverless-deploy-v0-0-1.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/flaskProject2-serverless-deploy-v0-0-1/dev/1630931646619-2021-09-06T12:34:06.619Z",
+    "artifactDirectoryName": "serverless/flaskProject2-serverless-deploy-v0-0-1/dev/1631161278348-2021-09-09T04:21:18.348Z",
     "artifact": "flaskProject2-serverless-deploy-v0-0-1.zip"
   }
 }
